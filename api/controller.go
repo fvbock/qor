@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/qor/qor"
+	"github.com/qor/qor/resource"
 
 	"net/http"
 	"path"
@@ -26,7 +27,7 @@ func (api *API) Create(context *qor.Context) {
 	res := api.Resources[context.ResourceName]
 
 	result := res.NewStruct()
-	// resource.DecodeToResource(res, result, ConvertFormToMetaValues(context, "QorResource.", res), context).Start()
+	resource.DecodeToResource(res, result, ConvertJSONToMetaValues(context, "QorResource.", res), context).Start()
 	api.DB.Save(result)
 
 	primaryKey := fmt.Sprintf("%v", api.DB.NewScope(result).PrimaryKeyValue())

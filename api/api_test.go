@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/qor/qor"
+	"github.com/qor/qor/api"
 	"github.com/qor/qor/resource"
 	"strconv"
 
@@ -68,6 +69,6 @@ func init() {
 			return
 		}})
 
-	admin.AddToMux("/api", mux)
+	api.AddToMux("/api", mux)
 	server = httptest.NewServer(mux)
 }

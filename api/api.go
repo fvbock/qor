@@ -16,6 +16,11 @@ type API struct {
 	auth      auth.Auth
 }
 
+func New(db *gorm.DB) *API {
+	api := API{Resources: map[string]*Resource{}, DB: db}
+	return &api
+}
+
 func (api *API) SetAuth(auth auth.Auth) {
 	api.auth = auth
 }

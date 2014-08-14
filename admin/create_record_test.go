@@ -2,8 +2,6 @@ package admin_test
 
 import (
 	"bytes"
-	"fmt"
-	_ "github.com/mattn/go-sqlite3"
 	"io"
 	"mime/multipart"
 	"net/http"
@@ -11,6 +9,8 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+
+	_ "github.com/mattn/go-sqlite3"
 
 	"testing"
 )
@@ -163,7 +163,6 @@ func TestUploadAttachment(t *testing.T) {
 				t.Errorf("User should be created successfully")
 			}
 
-			fmt.Println(user)
 			// fmt.Println(user.Avatar.Path)
 			// if user.Avatar.Path == "" {
 			// 	t.Errorf("Avatar should be saved")
