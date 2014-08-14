@@ -2,10 +2,10 @@ package publish
 
 import (
 	"fmt"
-	"os"
 	"time"
 
 	"github.com/jinzhu/gorm"
+	"github.com/qor/qor/media_library"
 )
 
 type Publish struct {
@@ -48,16 +48,16 @@ type Product struct {
 	Price     float64
 	Ext       string
 	PublishAt time.Time
-	Image     MediaLibrary `media_library:"path:/system/:table_name/:id/:filename;"`
+	Image     media_library.MediaLibrary `media_library:"path:/system/:table_name/:id/:filename;"`
 }
 
-Product{Title: "product A", Image: os.Open("xxxx")}
-db.Save(&product)
+// Product{Title: "product A", Image: os.Open("xxxx")}
+// db.Save(&product)
 
-db, err := publish.Open("sqlite", "/tmp/qor.db")
-user := db.NewResource(&Product{})
-user.InstantPublishAttrs("title", "color_code", "price", "colorA", "colorB")
-user.IgnoredAttrs("ext")
+// db, err := publish.Open("sqlite", "/tmp/qor.db")
+// user := db.NewResource(&Product{})
+// user.InstantPublishAttrs("title", "color_code", "price", "colorA", "colorB")
+// user.IgnoredAttrs("ext")
 
 // /system_draft/products/xxx.png
 // /system/products/xxx.png
